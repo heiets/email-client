@@ -10,6 +10,12 @@
   b. Mark as unread
   c. Delete
 
+## Hotkeys
+1. 'I' - open **inbox** folder
+2. 'R' - open **read** folder
+3. 'D' - open **deleted** folder
+4. 'Escape' - close email viewer
+
 ## Tech stack
 1. React + Vite
 2. Typescript
