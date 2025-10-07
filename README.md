@@ -16,6 +16,9 @@
 3. 'D' - open **deleted** folder
 4. 'Escape' - close email viewer
 
+## Working version
+https://email-client-six-cyan.vercel.app/
+
 ## Tech stack
 1. React + Vite
 2. Typescript
