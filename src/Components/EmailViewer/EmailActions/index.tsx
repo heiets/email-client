@@ -1,5 +1,5 @@
 import { Email } from '../../../types';
-import { MarkAsUnreadButton, DeleteButton } from '../../../components/EmailActions';
+import { MarkAsUnreadButton, DeleteButton } from '../../EmailActions';
 
 interface EmailActionsProps {
   onBack: () => void;

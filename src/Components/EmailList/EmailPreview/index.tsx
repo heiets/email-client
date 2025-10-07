@@ -1,6 +1,6 @@
 import { Email } from '../../../types'
 import { formatTime } from '../../../utils/formatTime'
-import { MarkAsReadButton, MarkAsUnreadButton, DeleteButton } from '../../../components/EmailActions';
+import { MarkAsReadButton, MarkAsUnreadButton, DeleteButton } from '../../EmailActions';
 import { useMarkAsRead } from '../../../context';
 
 interface EmailPreviewProps {
