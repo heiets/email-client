@@ -1,16 +1,22 @@
-# React + Vite
+# 💌 Email client
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## ⚙️ Functionality
+1. Getting emails from API(mocked via MSW), after first page load we load new email each 5 sec
+2. Displaying emails in the list
+3. View of specific email by clicking on them
+4. Each email has own folder based on its data: inbox/read/deleted
+5. Email actions:
+  a. Mark as read
+  b. Mark as unread
+  c. Delete
 
-Currently, two official plugins are available:
+## Tech stack
+1. React + Vite
+2. Typescript
+3. [React Query](https://tanstack.com/query/v5/docs/framework/react/overview)
+4. [Zod](https://zod.dev/)
+5. [Tailwind](https://tailwindcss.com/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Screenshots
+<img width="1879" height="923" alt="Screenshot 2025-10-07 at 18 59 28" src="https://github.com/user-attachments/assets/1060e856-e676-499e-932e-e88b358c2eac" />
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
