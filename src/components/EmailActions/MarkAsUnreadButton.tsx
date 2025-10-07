@@ -4,16 +4,14 @@ import { useMarkAsUnread } from '../../context';
 interface MarkAsUnreadButtonProps {
   emailId: number;
   withTitle?: boolean;
-  onClick?: (e: MouseEvent<HTMLButtonElement>) => void;
 }
 
-export const MarkAsUnreadButton = ({ emailId, withTitle = false, onClick }: MarkAsUnreadButtonProps) => {
+export const MarkAsUnreadButton = ({ emailId, withTitle = false }: MarkAsUnreadButtonProps) => {
   const markAsUnread = useMarkAsUnread();
   const title = 'Mark as Unread';
   const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
     markAsUnread(emailId);
-    onClick?.(e);
   };
 
   return (

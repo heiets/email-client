@@ -10,19 +10,21 @@ export const EmailContext = createContext<{
     markAsUnread: (emailId: number) => void;
     deleteEmail: (emailId: number) => void;
   };
+  selectedEmailId: number | null;
 }>({
-  emails: [],
+  emails: {},
   actions: {
     markAsRead: () => {},
     markAsUnread: () => {},
     deleteEmail: () => {},
   },
+  selectedEmailId: null,
 });
 
-export const EmailProvider = ({ children, selectedFolder }: { children: ReactNode, selectedFolder: Folder }) => {
+export const EmailProvider = ({ children, selectedFolder, selectedEmailId }: { children: ReactNode, selectedFolder: Folder, selectedEmailId: number | null }) => {
   const { emails, actions } = useEmails(selectedFolder);
   return (
-    <EmailContext.Provider value={{ emails, actions }}>
+    <EmailContext.Provider value={{ emails, actions, selectedEmailId }}>
       {children}
     </EmailContext.Provider>
   );
@@ -45,4 +47,9 @@ export const useMarkAsUnread = () => {
 export const useDeleteEmail = () => {
   const { actions } = useEmailContext();
   return actions.deleteEmail;
+};
+
+export const useSelectedEmail = () => {
+  const { emails, selectedEmailId } = useEmailContext();
+  return selectedEmailId ? emails[selectedEmailId] : null;
 };

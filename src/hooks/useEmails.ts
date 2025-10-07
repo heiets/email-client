@@ -6,7 +6,7 @@ import { EmailState } from '../state/types';
 import { useFilteredEmails } from './useFilteredEmails';
 
 export const initialState: EmailState = {
-  emails: [],
+  emails: {},
 };
 
 export const useEmails = (selectedFolder: Folder) => {

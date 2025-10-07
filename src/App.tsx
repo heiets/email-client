@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { Email, Folder } from './types';
+import { Folder } from './types';
 import { Sidebar } from './components/Sidebar';
 import { EmailList } from './components/EmailList';
 import { EmailViewer } from './components/EmailViewer';
@@ -10,17 +10,17 @@ import { EmailProvider } from './context';
 const queryClient = new QueryClient();
 
 const App = () => {
-  const [selectedEmail, setSelectedEmail] = useState<Email | null>(null);
+  const [selectedEmailId, setSelectedEmailId] = useState<number | null>(null);
   const [selectedFolder, setSelectedFolder] = useState<Folder>('inbox');
   return (
     <QueryClientProvider client={queryClient}>
-      <EmailProvider selectedFolder={selectedFolder}>
-        <HotkeysProvider setSelectedFolder={setSelectedFolder} setSelectedEmail={setSelectedEmail}>
+      <EmailProvider selectedFolder={selectedFolder} selectedEmailId={selectedEmailId}>
+        <HotkeysProvider setSelectedFolder={setSelectedFolder} setSelectedEmailId={setSelectedEmailId}>
           <div className="grid grid-cols-[10%_90%] h-[100vh]">
             <Sidebar selectedFolder={selectedFolder} setSelectedFolder={setSelectedFolder} />
             <div className="relative">
-              <EmailList setSelectedEmail={setSelectedEmail} />
-              {selectedEmail && <EmailViewer selectedEmail={selectedEmail} onBack={() => setSelectedEmail(null)} />}
+              <EmailList setSelectedEmailId={setSelectedEmailId} />
+              {selectedEmailId && <EmailViewer onBack={() => setSelectedEmailId(null)} />}
             </div>
           </div>
         </HotkeysProvider>

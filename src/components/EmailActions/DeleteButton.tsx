@@ -4,16 +4,16 @@ import { useDeleteEmail } from '../../context';
 interface DeleteButtonProps {
   emailId: number;
   withTitle?: boolean;
-  onClick?: (e: MouseEvent<HTMLButtonElement>) => void;
+  onDelete?: () => void;
 }
 
-export const DeleteButton = ({ emailId, withTitle = false, onClick }: DeleteButtonProps) => {
+export const DeleteButton = ({ emailId, withTitle = false, onDelete }: DeleteButtonProps) => {
   const deleteEmail = useDeleteEmail();
   const title = 'Delete';
   const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
     deleteEmail(emailId);
-    onClick?.(e);
+    onDelete?.();
   };
 
   return (

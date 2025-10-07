@@ -4,17 +4,15 @@ import { useMarkAsRead } from '../../context';
 interface MarkAsReadButtonProps {
   emailId: number;
   withTitle?: boolean;
-  onClick?: (e: MouseEvent<HTMLButtonElement>) => void;
 }
 
-export const MarkAsReadButton = ({ emailId, withTitle = false, onClick }: MarkAsReadButtonProps) => {
+export const MarkAsReadButton = ({ emailId, withTitle = false }: MarkAsReadButtonProps) => {
   const markAsRead = useMarkAsRead();
   const title = 'Mark as Read';
 
   const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
     markAsRead(emailId);
-    onClick?.(e);
   };
 
   return (

@@ -5,15 +5,15 @@ import { useMarkAsRead } from '../../../context';
 
 interface EmailPreviewProps {
     email: Email;
-    setSelectedEmail: (email: Email) => void;
+    setSelectedEmailId: (emailId: number) => void;
 }
 
-export const EmailPreview = ({ email, setSelectedEmail }: EmailPreviewProps) => {
+export const EmailPreview = ({ email, setSelectedEmailId }: EmailPreviewProps) => {
     const markAsRead = useMarkAsRead();
     const { icon, from, subject, content, date, isRead, isDeleted } = email;
 
     const handleViewClick = () => {
-        setSelectedEmail(email);
+        setSelectedEmailId(email.id);
         markAsRead(email.id);
     };
 

@@ -7,5 +7,5 @@ export type EmailAction =
   | { type: 'DELETE_EMAIL'; payload: number };
 
 export interface EmailState {
-  emails: Email[];
+  emails: Record<number, Email>;
 }

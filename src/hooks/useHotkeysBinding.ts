@@ -1,15 +1,15 @@
 import { useEffect } from 'react';
-import { Folder, Email } from '../types';
+import { Folder } from '../types';
 
 interface UseHotkeysBindingProps {
-  setSelectedEmail: (email: Email | null) => void;
+  setSelectedEmailId: (emailId: number | null) => void;
   setSelectedFolder: (folder: Folder) => void;
 }
 
-export const useHotkeysBinding = ({ setSelectedEmail, setSelectedFolder }: UseHotkeysBindingProps) => {
+export const useHotkeysBinding = ({ setSelectedEmailId, setSelectedFolder }: UseHotkeysBindingProps) => {
   const handleKeyDown = (event: KeyboardEvent) => {
     if (event.key === 'Escape') {
-      setSelectedEmail(null);
+      setSelectedEmailId(null);
     }
     if (event.key === 'r') {
       setSelectedFolder('read');
@@ -27,5 +27,5 @@ export const useHotkeysBinding = ({ setSelectedEmail, setSelectedFolder }: UseHo
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, [setSelectedEmail, setSelectedFolder, handleKeyDown]);
+  }, [setSelectedEmailId, setSelectedFolder, handleKeyDown]);
 };
