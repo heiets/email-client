@@ -1,11 +1,19 @@
-import React from 'react'
+import { Email } from '../../../types';
+import { MarkAsUnreadButton, DeleteButton } from '../../EmailActions';
 
-export const EmailActions = () => {
-  return (
-    <div className="flex space-x-3 justify-end">
-      <div className="bg-blue-500 text-white px-4 py-2 rounded-md cursor-pointer hover:bg-blue-600">👁️ Mark as Read</div>
-      <div className="bg-green-500 text-white px-4 py-2 rounded-md cursor-pointer hover:bg-green-600">🙈 Mark as Unread</div>
-      <div className="bg-red-500 text-white px-4 py-2 rounded-md cursor-pointer hover:bg-red-600">🗑️ Delete</div>
-    </div>
-  )
+interface EmailActionsProps {
+  onBack: () => void;
+  selectedEmail: Email;
 }
+
+export const EmailActions = ({ onBack, selectedEmail }: EmailActionsProps) => (
+  <div className="flex justify-between w-full">
+    <div className="flex">
+      <div className="bg-gray-400 text-white px-4 py-2 rounded-md cursor-pointer hover:bg-gray-500" onClick={onBack}>⬅️ Back to Inbox</div>
+    </div>
+    <div className="flex space-x-3">
+      {selectedEmail.isRead && <MarkAsUnreadButton emailId={selectedEmail.id} withTitle />}
+      {!selectedEmail.isDeleted && <DeleteButton emailId={selectedEmail.id} withTitle />}
+    </div>
+  </div>
+)

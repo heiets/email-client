@@ -1,35 +1,48 @@
-import React from 'react'
+import { Email } from '../../../types'
+import { formatTime } from '../../../utils/formatTime'
+import { MarkAsReadButton, MarkAsUnreadButton, DeleteButton } from '../../EmailActions';
+import { useMarkAsRead } from '../../../context';
 
-export const EmailPreview = ({ email }: { email: any }) => {
-  // Format the UTC date to display time
-  const formatTime = (dateString: string) => {
-    const date = new Date(dateString);
-    return date.toLocaleTimeString('en-US', { 
-      hour: '2-digit', 
-      minute: '2-digit',
-      hour12: false 
-    });
-  };
+interface EmailPreviewProps {
+    email: Email;
+    setSelectedEmail: (email: Email) => void;
+}
 
-  return (
-    <div className="grid grid-cols-[20%_75%_5%] hover:bg-blue-100 p-2 rounded-md cursor-pointer text-lg">
-        <div className="flex space-x-3">
-            <div>
-                {email.icon}
+export const EmailPreview = ({ email, setSelectedEmail }: EmailPreviewProps) => {
+    const markAsRead = useMarkAsRead();
+    const { icon, from, subject, content, date, isRead, isDeleted } = email;
+
+    const handleViewClick = () => {
+        setSelectedEmail(email);
+        markAsRead(email.id);
+    };
+
+    return (
+        <div className="group grid grid-cols-[10%_80%_10%] hover:bg-blue-100 p-2 rounded-md cursor-pointer text-lg items-center" onClick={handleViewClick}>
+            <div className="flex space-x-3">
+                <div>
+                    {icon}
+                </div>
+                <div className={`${isRead ? 'text-gray-900' : 'font-semibold text-black'}`}>
+                    {from}
+                </div>
             </div>
-            <div className="font-bold">
-                {email.from}
+            <div className="flex space-x-4 pr-10">
+                <div className={`whitespace-nowrap ${isRead ? 'text-gray-800' : 'text-black font-semibold'}`}>
+                    {subject}
+                </div>
+                <div className={`truncate ${isRead ? 'text-gray-400' : 'text-black'}`}>
+                    {content}
+                </div>
+            </div>
+            <div className="h-[60px] flex items-center">
+                <div className="text-sm text-gray-500 group-hover:hidden">{formatTime(date)}</div>
+                <div className="space-x-3 group-hover:flex hidden">
+                    {!isRead && <MarkAsReadButton emailId={email.id} />}
+                    {isRead && <MarkAsUnreadButton emailId={email.id} />}
+                    {!isDeleted && <DeleteButton emailId={email.id} />}
+                </div>
             </div>
         </div>
-        <div className="flex space-x-4 pr-10">
-            <div className="text-gray-700 whitespace-nowrap">
-                {email.subject}
-            </div>
-            <div className="text-gray-500 truncate">
-                {email.content}
-            </div>
-        </div>
-        <div className="text-sm text-gray-500">{formatTime(email.date)}</div>
-    </div>
-  )
+    )
 }
