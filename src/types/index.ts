@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from "zod";
 
 export const EmailSchema = z.object({
   id: z.number(),
@@ -15,4 +15,4 @@ export const EmailListSchema = z.array(EmailSchema);
 
 export type Email = z.infer<typeof EmailSchema>;
 
-export type Folder = 'inbox' | 'read' | 'deleted';
+export type Folder = "inbox" | "read" | "deleted";

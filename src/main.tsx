@@ -1,17 +1,17 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import App from './App'
-import './index.css'
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import App from "./App";
+import "./index.css";
 
 async function enableMocking() {
-  const { worker } = await import('./mocks/browser.js')
-  return worker.start()
+  const { worker } = await import("./mocks/browser.js");
+  return worker.start();
 }
- 
+
 enableMocking().then(() => {
-  createRoot(document.getElementById('root') as HTMLElement).render(
+  createRoot(document.getElementById("root") as HTMLElement).render(
     <StrictMode>
       <App />
     </StrictMode>,
-  )
-})
+  );
+});

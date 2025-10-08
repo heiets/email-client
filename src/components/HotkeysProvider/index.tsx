@@ -1,7 +1,7 @@
-import { ReactNode } from 'react'
-import { useHotkeysBinding } from '../../hooks/useHotkeysBinding'
-import { Folder } from '../../types'
-import { useEmailContext } from '../../context'
+import { ReactNode } from "react";
+import { useHotkeysBinding } from "../../hooks/useHotkeysBinding";
+import { Folder } from "../../types";
+import { useEmailContext } from "../../context";
 
 interface HotkeysProviderProps {
   children: ReactNode;
@@ -10,19 +10,22 @@ interface HotkeysProviderProps {
   selectedEmailId: number | null;
 }
 
-export const HotkeysProvider = ({ children, setSelectedFolder, setSelectedEmailId, selectedEmailId }: HotkeysProviderProps) => {
+export const HotkeysProvider = ({
+  children,
+  setSelectedFolder,
+  setSelectedEmailId,
+  selectedEmailId,
+}: HotkeysProviderProps) => {
   const { actions } = useEmailContext();
-  
-  useHotkeysBinding({ 
-    setSelectedFolder, 
-    setSelectedEmailId, 
+
+  useHotkeysBinding({
+    setSelectedFolder,
+    setSelectedEmailId,
     selectedEmailId,
     markAsRead: actions.markAsRead,
     markAsUnread: actions.markAsUnread,
-    deleteEmail: actions.deleteEmail
+    deleteEmail: actions.deleteEmail,
   });
-  
-  return (
-    <>{children}</>
-  )
-}
+
+  return <>{children}</>;
+};

@@ -1,10 +1,10 @@
-import { createContext, useContext, ReactNode } from 'react';
-import { Folder } from '../types';
-import { EmailState } from '../state/types';
-import { useEmails } from '../hooks/useEmails';
+import { createContext, useContext, ReactNode } from "react";
+import { Folder } from "../types";
+import { EmailState } from "../state/types";
+import { useEmails } from "../hooks/useEmails";
 
 export const EmailContext = createContext<{
-  emails: EmailState['emails'];
+  emails: EmailState["emails"];
   actions: {
     markAsRead: (emailId: number) => void;
     markAsUnread: (emailId: number) => void;
@@ -21,7 +21,15 @@ export const EmailContext = createContext<{
   selectedEmailId: null,
 });
 
-export const EmailProvider = ({ children, selectedFolder, selectedEmailId }: { children: ReactNode, selectedFolder: Folder, selectedEmailId: number | null }) => {
+export const EmailProvider = ({
+  children,
+  selectedFolder,
+  selectedEmailId,
+}: {
+  children: ReactNode;
+  selectedFolder: Folder;
+  selectedEmailId: number | null;
+}) => {
   const { emails, actions } = useEmails(selectedFolder);
   return (
     <EmailContext.Provider value={{ emails, actions, selectedEmailId }}>

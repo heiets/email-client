@@ -1,31 +1,32 @@
-import { MouseEvent } from 'react';
-import { useMarkAsUnread } from '../../context';
+import { MouseEvent } from "react";
+import { useMarkAsUnread } from "../../context";
 
 interface MarkAsUnreadButtonProps {
   emailId: number;
   withTitle?: boolean;
 }
 
-export const MarkAsUnreadButton = ({ emailId, withTitle = false }: MarkAsUnreadButtonProps) => {
+export const MarkAsUnreadButton = ({
+  emailId,
+  withTitle = false,
+}: MarkAsUnreadButtonProps) => {
   const markAsUnread = useMarkAsUnread();
-  const title = 'Mark as Unread';
+  const title = "Mark as Unread";
   const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
     markAsUnread(emailId);
   };
 
   return (
-    <button 
-      type="button" 
-      title={title} 
-      aria-label={title} 
+    <button
+      type="button"
+      title={title}
+      aria-label={title}
       className="bg-green-500 text-white px-4 py-2 space-x-2 rounded-md cursor-pointer hover:bg-green-600"
       onClick={handleClick}
     >
       <span>🙈</span>
-      {
-        withTitle && <span>{title}</span>
-      }
+      {withTitle && <span>{title}</span>}
     </button>
   );
 };
