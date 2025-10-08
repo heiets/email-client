@@ -24,9 +24,10 @@ https://email-client-six-cyan.vercel.app/
 ## Tech stack
 1. React + Vite
 2. Typescript
-3. [React Query](https://tanstack.com/query/v5/docs/framework/react/overview)
-4. [Zod](https://zod.dev/)
-5. [Tailwind](https://tailwindcss.com/)
+3. [RxJS](https://rxjs.dev/)
+4. [React Query](https://tanstack.com/query/v5/docs/framework/react/overview)
+5. [Zod](https://zod.dev/)
+6. [Tailwind](https://tailwindcss.com/)
 
 ## Screenshots
 <img width="1879" height="923" alt="Screenshot 2025-10-07 at 18 59 28" src="https://github.com/user-attachments/assets/1060e856-e676-499e-932e-e88b358c2eac" />
