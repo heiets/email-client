@@ -1,10 +1,10 @@
-import { useMemo } from "react";
-import { Folder } from "../types";
-import { EmailState } from "../state/types";
+import { useMemo } from 'react';
+import { Folder } from '../types';
+import { EmailState } from '../state/types';
 
 interface UseFilteredEmailsProps {
   selectedFolder: Folder;
-  initialEmails: EmailState["emails"];
+  initialEmails: EmailState['emails'];
 }
 
 export const useFilteredEmails = ({
@@ -14,19 +14,19 @@ export const useFilteredEmails = ({
   const filteredEmails = useMemo(() => {
     const filteredEmails = { ...initialEmails };
     Object.values(filteredEmails).forEach((email) => {
-      if (selectedFolder !== "deleted" && email.isDeleted) {
+      if (selectedFolder !== 'deleted' && email.isDeleted) {
         delete filteredEmails[email.id];
       }
 
-      if (selectedFolder === "read" && !email.isRead) {
+      if (selectedFolder === 'read' && !email.isRead) {
         delete filteredEmails[email.id];
       }
 
-      if (selectedFolder === "deleted" && !email.isDeleted) {
+      if (selectedFolder === 'deleted' && !email.isDeleted) {
         delete filteredEmails[email.id];
       }
 
-      if (selectedFolder === "inbox" && email.isDeleted) {
+      if (selectedFolder === 'inbox' && email.isDeleted) {
         delete filteredEmails[email.id];
       }
     });
@@ -34,18 +34,5 @@ export const useFilteredEmails = ({
     return filteredEmails;
   }, [initialEmails, selectedFolder]);
 
-  const sortedEmails = useMemo(() => {
-    const sortedEmailsArray = Object.values(filteredEmails).sort(
-      (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
-    );
-
-    const sortedEmailsObject: EmailState["emails"] = {};
-    sortedEmailsArray.forEach((email) => {
-      sortedEmailsObject[email.id] = email;
-    });
-
-    return sortedEmailsObject;
-  }, [filteredEmails]);
-
-  return sortedEmails;
+  return filteredEmails;
 };
