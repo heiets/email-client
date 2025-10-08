@@ -14,7 +14,9 @@
 1. 'I' - open **inbox** folder
 2. 'R' - open **read** folder
 3. 'D' - open **deleted** folder
-4. 'Escape' - close email viewer
+4. In email viewer: 'Escape' - close email viewer
+5. In email viewer: 'Delete' - delete opened email
+6. In email viewer: 'U' - mark email as unread
 
 ## Working version
 https://email-client-six-cyan.vercel.app/

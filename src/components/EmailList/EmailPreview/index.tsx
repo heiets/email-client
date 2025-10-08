@@ -18,7 +18,7 @@ export const EmailPreview = ({ email, setSelectedEmailId }: EmailPreviewProps) =
     };
 
     return (
-        <div className="group grid grid-cols-[10%_80%_10%] hover:bg-blue-100 p-2 rounded-md cursor-pointer text-lg items-center" onClick={handleViewClick}>
+        <div className="group grid grid-cols-[15%_75%_10%] hover:bg-blue-100 p-2 rounded-md cursor-pointer text-lg items-center" onClick={handleViewClick}>
             <div className="flex space-x-3">
                 <div>
                     {icon}

@@ -15,7 +15,7 @@ const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <EmailProvider selectedFolder={selectedFolder} selectedEmailId={selectedEmailId}>
-        <HotkeysProvider setSelectedFolder={setSelectedFolder} setSelectedEmailId={setSelectedEmailId}>
+        <HotkeysProvider setSelectedFolder={setSelectedFolder} setSelectedEmailId={setSelectedEmailId} selectedEmailId={selectedEmailId}>
           <div className="grid grid-cols-[10%_90%] h-[100vh]">
             <Sidebar selectedFolder={selectedFolder} setSelectedFolder={setSelectedFolder} />
             <div className="relative">
